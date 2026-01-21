@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoCapture Sidebar Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preview-container {
+            width: 90%;
+            max-width: 1400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .main-content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .main-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .sample-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .sample-content h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <h1>Microsoft Corporation</h1>
+            <p>
+                Microsoft Corporation is an American multinational technology corporation 
+                headquartered in Redmond, Washington. Microsoft's best-known software products 
+                are the Windows line of operating systems, the Microsoft Office suite, and 
+                the Internet Explorer and Edge web browsers.
+            </p>
+            <p>
+                Its flagship hardware products are the Xbox video game consoles and the 
+                Microsoft Surface lineup of touchscreen personal computers. Microsoft ranked 
+                No. 14 in the 2022 Fortune 500 rankings of the largest United States 
+                corporations by total revenue.
+            </p>
+            
+            <div class="sample-content">
+                <h2>Contact Information</h2>
+                <p><strong>Phone:</strong> +1 (425) 882-8080</p>
+                <p><strong>Email:</strong> contact@microsoft.com</p>
+                <p><strong>Website:</strong> www.microsoft.com</p>
+            </div>
+        </div>
+        
+        <!-- Sidebar (Injected by InfoCapture) -->
+        <div id="infocapture-sidebar" style="
+            position: relative;
+            width: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        ">
+            <div style="
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: center;
+                border-bottom: 2px solid rgba(255,255,255,0.3);
+                padding-bottom: 15px;
+            ">📊 InfoCapture</div>
+            
+            <div style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                backdrop-filter: blur(10px);
+            ">
+                <div style="font-size: 14px; opacity: 0.8; margin-bottom: 10px;">ID: 1</div>
+                <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">Microsoft Corporation</div>
+                
+                <div style="
+                    background: rgba(255,255,255,0.15);
+                    border-radius: 8px;
+                    padding: 12px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                " onmouseover="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateX(-5px)'"
+                   onmouseout="this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateX(0)'"
+                   onclick="this.style.borderColor='#ffd700'">
+                    <div style="font-size: 12px; text-transform: uppercase; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px;">🔗 Website</div>
+                    <div style="font-size: 14px; word-wrap: break-word; font-weight: 500;">https://www.microsoft.com</div>
+                </div>
+                
+                <div style="
+                    background: rgba(255,255,255,0.15);
+                    border-radius: 8px;
+                    padding: 12px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                " onmouseover="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateX(-5px)'"
+                   onmouseout="this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateX(0)'"
+                   onclick="this.style.borderColor='#ffd700'">
+                    <div style="font-size: 12px; text-transform: uppercase; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px;">📞 Phone</div>
+                    <div style="font-size: 14px; word-wrap: break-word; font-weight: 500;">+1 (425) 882-8080</div>
+                </div>
+                
+                <div style="
+                    background: rgba(255,255,255,0.15);
+                    border-radius: 8px;
+                    padding: 12px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                " onmouseover="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateX(-5px)'"
+                   onmouseout="this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateX(0)'"
+                   onclick="this.style.borderColor='#ffd700'">
+                    <div style="font-size: 12px; text-transform: uppercase; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px;">📧 Email</div>
+                    <div style="font-size: 14px; word-wrap: break-word; font-weight: 500;">contact@microsoft.com</div>
+                </div>
+                
+                <div style="
+                    background: rgba(255,255,255,0.15);
+                    border-radius: 8px;
+                    padding: 12px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                " onmouseover="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateX(-5px)'"
+                   onmouseout="this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateX(0)'"
+                   onclick="this.style.borderColor='#ffd700'">
+                    <div style="font-size: 12px; text-transform: uppercase; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px;">ℹ️ About</div>
+                    <div style="font-size: 14px; word-wrap: break-word; font-weight: 500;">Microsoft Corporation is an American multinational technology corporation headquartered in Redmond, Washington...</div>
+                </div>
+            </div>
+            
+            <div style="
+                text-align: center;
+                padding: 15px;
+                background: rgba(255,255,255,0.1);
+                border-radius: 8px;
+                margin-top: 10px;
+                font-size: 14px;
+            ">Click on any field to verify or highlight it</div>
+        </div>
+    </div>
+</body>
+</html>
