@@ -7,6 +7,8 @@ import pandas as pd
 import re
 import time
 import os
+import json
+import traceback
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -14,6 +16,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
@@ -40,19 +43,24 @@ class InfoCaptureCrawler:
         self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         
     def inject_sidebar(self, data):
-        """Inject the sidebar with company information"""
+        """Inject the sidebar with company information
+        
+        Note: sidebar_html and sidebar_js are from trusted local files,
+        not user input, so there's no XSS risk from template injection.
+        """
         sidebar_html_path = os.path.join(os.path.dirname(__file__), '..', 'extension', 'sidebar.html')
         sidebar_js_path = os.path.join(os.path.dirname(__file__), '..', 'extension', 'sidebar.js')
         
-        # Read sidebar HTML
+        # Read sidebar HTML (trusted source - local file)
         with open(sidebar_html_path, 'r') as f:
             sidebar_html = f.read()
         
-        # Read sidebar JS
+        # Read sidebar JS (trusted source - local file)
         with open(sidebar_js_path, 'r') as f:
             sidebar_js = f.read()
         
         # Inject sidebar into page
+        # Note: sidebar_html is from a trusted local file, not user input
         inject_script = f"""
         // Remove existing sidebar if present
         const existingSidebar = document.querySelector('#infocapture-sidebar');
@@ -94,7 +102,7 @@ class InfoCaptureCrawler:
                     EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Accept') or contains(., 'I agree')]"))
                 )
                 accept_button.click()
-            except:
+            except TimeoutException:
                 pass
             
             # Find search box and search
@@ -240,7 +248,6 @@ class InfoCaptureCrawler:
             }
             
             # Display in sidebar
-            import json
             data_json = json.dumps(self.current_data).replace('`', '\\`')
             self.inject_sidebar(data_json)
             
@@ -294,7 +301,6 @@ class InfoCaptureCrawler:
             
         except Exception as e:
             print(f"\n❌ Error: {e}")
-            import traceback
             traceback.print_exc()
         
         finally:
